@@ -1,0 +1,53 @@
+The Atoms object can represent an isolated molecule, or a
+periodically repeated structure.
+
+vars
+    _cellobj:
+        ase.cell.Cell object representing the unit cell.
+    arrays:
+        dictionary containing ndarrays with info on the object.
+            'numbers':
+                Atomic numbers of the atoms
+            'positions':
+                positions of the atoms, in absolute cartesian coords
+                (not fractions of the unit cell)
+    info:
+        extra object information.
+            spacegroup:
+            occupancy:
+
+funcs
+    get_cell(self):
+        get ase.cell.Cell representing the unit cell.
+        Cell is similar to a 3x3 ndarray with cell[i, j] being
+        the jth cartesian coordinate of the ith cell vector.
+
+    get_cell_lengths_and_angles(self):
+        get unit cell parameters, a sequence of 6 numbers.
+        First three are vector lengths and second three
+        are angles between them in degrees:
+        [len(a), len(b), len(c), angle(b,c), angle(a,c), angle(a,b)]
+        or in cif syntax
+        [_cell_length_a, _cell_length_b, _cell_length_c,
+            _cell_angle_alpha, _cell_angle_beta, _cell_angle_gamma]
+
+    get_array(self, name):
+        get one of the arrays in the arrays dict above by name.
+
+    get_atomic_numbers(self):
+        get ndarray of atomic numbers.
+
+    get_chemical_symbols(self):
+        get list of chemical symbol strings.
+
+    get_positions(self, wrap=False):
+        get ndarray of positions of atoms in Cartesian coords.
+
+    get_scaled_positions(self, wrap=True):
+        get positions of atoms relative to unit cell.
+
+    get_volume(self):
+        get volume of unit cell.
+
+    edit(self):
+        visualise and edit Atoms object with a GUI.
