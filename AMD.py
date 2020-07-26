@@ -180,4 +180,3 @@ if __name__ == '__main__':
 	# plot_one_actual_and_fitted(src, test_functions.my_rt, "job_00721")
 	d = fit_all(src, my_rt)
 	print(d)
-	# print(find_const(src))
