@@ -1,4 +1,4 @@
-The Atoms object can represent an isolated molecule, or a
+The ase.Atoms object can represent an isolated molecule, or a
 periodically repeated structure.
 
 vars
@@ -51,3 +51,7 @@ funcs
 
     edit(self):
         visualise and edit Atoms object with a GUI.
+
+    ase.build.niggli_reduce(atoms):
+        convert atoms object's unit cell into maximally reduced
+        Niggli unit cell. Also wraps atoms into unit cell

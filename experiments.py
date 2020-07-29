@@ -1,9 +1,5 @@
-from ase.io import read
-import os
 import numpy as np
 import ase_tools
-import ase_plotter
-import ase
 
 def fit_plane(atoms):
 	atoms = ase_tools.unwrap_atoms_from_cell(atoms)
@@ -30,20 +26,24 @@ def compare_centers(atoms, eps=np.float32(1e-5)):
 	return pairs
 
 if __name__ == '__main__':
+	import os
+	from ase.io import read
+	import ase
+	from draw import draw
+	from pymatgen.io.ase import AseAtomsAdaptor
+
 	# "job_03351.cif" simplest crystal
     # "job_06871.cif" largest volume
     # "job_06467.cif" most atoms
-	from ase import neighborlist
-	from scipy import sparse
-	import networkx as nx
-	import matplotlib.pyplot as plt
-	import ase_plotter
 
-	CIF_DIRECTORY = "T2experimental/"
-
-	atoms = read(os.path.join(CIF_DIRECTORY, "NAVXUG_1478356_T2alpha.cif"))
-	fig = plt.figure()
-	ax = fig.gca(projection='3d')
-	ase_plotter.draw(atoms, ax)
-	plt.show()
-	plt.close()
+	CIF_DIRECTORY = "cifs/"
+	path = os.path.join(CIF_DIRECTORY, "niggli_test.cif")
+	atoms = read(path)
+	# atoms = AseAtomsAdaptor.get_structure(atoms)
+	# print(atoms)
+	print(atoms.get_cell_lengths_and_angles())
+	draw(atoms)
+	# atoms.lattice = atoms.lattice.get_niggli_reduced_lattice()
+	ase.build.niggli_reduce(atoms)
+	print(atoms.get_cell_lengths_and_angles())
+	draw(atoms)

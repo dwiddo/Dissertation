@@ -274,7 +274,7 @@ if __name__ == "__main__":
     # experimental solvent SEMDIA_1520227_T2delta_240K.cif
     filename = "SEMDIA_1520227_T2delta_240K.cif"
     path = os.path.join(CIF_DIRECTORY, filename)
-    # path = "ding dong"
+
     draw(path, show_unit_cell=True,
                show_bonds=True,
                unwrap=False,
