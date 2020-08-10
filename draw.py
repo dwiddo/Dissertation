@@ -278,4 +278,6 @@ if __name__ == "__main__":
     draw(path, show_unit_cell=True,
                show_bonds=True,
                unwrap=False,
-               show_centers=False)
+               show_centers=True)
+
+    

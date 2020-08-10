@@ -41,6 +41,8 @@ def fit_all_and_write_values(src, function, function_as_str, filepath):
 	errors = []
 	names = []
 	param_opts = []
+	sigmas = []
+	max_abs_diffs = []
 	with open(src) as f:
 		reader = csv.reader(f)
 		next(reader)
@@ -57,15 +59,20 @@ def fit_all_and_write_values(src, function, function_as_str, filepath):
 				continue
 			names.append(line[0])
 			param_opts.append(param_opt)
-			errors.append(np.sum(np.square(ydata - function(xdata, *param_opt))) / n)
-	av_err  = sum(errors) / len(errors)
-	with open(filepath, 'w') as f:
+			errors.append(np.sqrt(np.sum(np.square(ydata - function(xdata, *param_opt))) / n))
+			abs_diffs = np.absolute(ydata - function(xdata, *param_opt))
+			sigmas.append(np.std(abs_diffs, ddof=1))
+			max_abs_diffs.append(np.amax(abs_diffs))
+	av_err = sum(errors) / len(errors)
+	av_std = sum(sigmas) / len(sigmas)
+	with open(filepath, 'w', newline='') as f:
 		writer = csv.writer(f)
-		writer.writerow(("function:" + function_as_str, "average_MSE:" + str(av_err)))
+		writer.writerow(("function:" + function_as_str, "average_RMS:" + str(av_err),
+						 "average_std:" + str(av_std)))
 		sig = list(inspect.signature(function).parameters.keys())[1:]
-		writer.writerow(('name', *sig, 'MSE'))
-		for name, params, err in zip(names, param_opts, errors):
-			writer.writerow((name, *params, err))
+		writer.writerow(('name', *sig, 'RMS', 'std_dev_abs_diff', 'max_abs_difference'))
+		for name, params, err, sigma, max_diff in zip(names, param_opts, errors, sigmas, max_abs_diffs):
+			writer.writerow((name, *params, err, sigma, max_diff))
 
 def plot_one_actual_and_fitted(src, function, job_name):
 	with open(src) as f:
@@ -98,6 +105,7 @@ def plot_all_actual_and_fitted(src, function):
 			plt.plot(ydata, label='actual')
 			plt.plot(function(xdata, *param_opt), label='fitted')
 			plt.legend()
+			print(line[0], param_opt)
 			plt.show()
 			plt.close()
 
@@ -176,10 +184,15 @@ if __name__ == '__main__':
 	from test_functions import my_rt
 	filename = "T2L_Energy_Density_AMDs1000_CLEAN.csv"
 	src = os.path.join("Data", filename)
-	s = "(p1*x)^p2"
-	filepath = "Data/pow(p1x,p2).csv"
-	# d = fit_all_and_write_values(src, my_rt, s, filepath)
-	params = fit_all(src, my_rt)
-	for i in range(len(params[0])):
-		plt.hist([p[i] for p in params], bins=250)
-		plt.show()
+	s = "(p*x)^0.35076971"
+	filepath = "Data/new/pow(px,0.35076971).csv"
+	d = fit_all_and_write_values(src, my_rt, s, filepath)
+	# plot_all_actual_and_fitted(src, my_rt)
+
+	# params = fit_all(src, my_rt)
+	# for i in range(len(params[0])):
+	# 	p = np.array([p[i] for p in params])
+	# 	print("min:", min(p), "max:", max(p))
+	# 	print("stddev:", np.std(p))
+	# 	plt.hist(p, bins=250)
+	# 	plt.show()

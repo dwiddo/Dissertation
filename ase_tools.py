@@ -148,7 +148,7 @@ def unwrap(atoms, wrap_centers_into_cell=False):
         centers = get_component_centers(atoms)
         components = get_connected_components(atoms.get_positions(), atoms.get_chemical_symbols())
         scaled_centers = np.matmul(centers, cart_to_fract)
-        cell_lengths = atoms.get_cell_lengths_and_angles()
+        # cell_lengths = atoms.get_cell_lengths_and_angles()
         for i, c in enumerate(scaled_centers):
             for j, coord in enumerate(c):
                 if coord < 0:
