@@ -108,32 +108,10 @@ if __name__ == '__main__':
 		reads from param_data csv file, cuts outliers, and writes
 		raw params back into a csv file.
 	"""
-	# import csv
-	#
-	# filename = "pow(px,0.35076971).csv"
-	# src = os.path.join("Data/function_data_csv", filename)
-	# data = []
-	# exclude = 4
-	# with open(src) as f:
-	#     reader = csv.reader(f)
-	#     next(reader)
-	#     for line in reader:
-	#         data.append([float(x) for x in line[1:4]])
-	#
-	# # trim the data
-	# data = np.array(data)
-	# # sums = np.sum(data, axis=-1)
-	# # cut_data = np.delete(data, np.argsort(sums)[-4:], axis=0)		
-	# # data = data[abs(sums-np.mean(sums)) < 4 * np.std(sums)]
-	#
-	# # print(cut_data.shape, cut_data)
-	#
-	# path = os.path.join("Data/raw_parameters_csv", filename)
-	# with open(path, "w", newline='') as f:
-	# 	writer = csv.writer(f)
-	# 	writer.writerow(("a", "b", "p"))
-	# 	for line in data:
-	# 		writer.writerow(line)
+	# # metric = ...
+	# # cut_data = np.delete(data, np.argsort(metric)[-4:], axis=0)		
+	# # data = data[abs(metric-np.mean(metric)) < 4 * np.std(metric)]
+
 
 
 	path = 'Data\parameter_data_csv\p1+p2pow(x,p3).csv'
