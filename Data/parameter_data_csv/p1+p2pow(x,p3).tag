@@ -1,0 +1,3 @@
+function:p1+p2*(x)^p3
+average_RMS:0.08025004251667688
+average_std:0.053980569100424126
