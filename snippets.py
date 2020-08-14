@@ -66,48 +66,39 @@ def read_csv_(path, split_names=None, omit_names=None):
 	else:
 		return np.array(data), np.array(data_)
 
-
-		# if split_names is None:
-		# 	for i, line in enumerate(reader):
-		# 		if line[0] not in ignore_names:
-		# 			data.append([float(x) for x in line[1:4]])
-		# 	return np.array(data), None
-		# else:
-		# 	data_ = []
-		# 	for line in reader:
-		# 		if line[0] not in ignore_names:
-		# 			if line[0] in split_names:
-		# 				data_.append([float(x) for x in line[1:4]])
-		# 			else:
-		# 				data.append([float(x) for x in line[1:4]])
-		# 	return np.array(data), np.array(data_)
-
-def flatten_colour_scatter_label(path, ax, highlight_names=None, omit_names=None):
+def flatten_colour_label_scatter(data, ax, data_=None, data__labels=None):
 	"""
-	very specific function, as the above is.
-	Takes path to csv in format found in directory Data\parameter_data_csv
-	(skip first two lines, columns are name,p1,p2,p3,etc)
-	plots a scatter with p1 on x-axis, p2 on y-axis. colour gradient is then
-	applied according to p3.
+	:param: data 
+		np array of shape (n,3)
+	:param: ax
+		matplotlib axes object to draw to
+	:param: data_
+		np array of shape (n,3)
+	:param: data__labels
+		container of strings the same length as data_ (len(lata__labels) == data.shape[0])
+		
+	:return:
+		matplotlib PathCollection object returned from scatter. Useful to add colourbar.
+
+	plot first two columns of data as a scatter to ax, and colour based on the third.
+	points in data_ will be labelled with data__labels and coloured black.
 	"""
 
-	data, label_data = read_csv_(path, split_names=highlight_names, omit_names=omit_names)
-	X = data[:,0]
-	Y = data[:,1]
-	clr = data[:,2]
+	X = data[:,2]
+	Y = data[:,0]
+	clr = data[:,1]
 
-	im = ax.scatter(X, Y, s=3, c=clr, cmap='inferno',
+	im = ax.scatter(X, Y, s=3, c=clr, cmap='seismic',
 				norm=colors.PowerNorm(gamma=0.5)
 				# norm=colors.LogNorm(vmin=clr.min(), vmax=clr.max())
 				)
-	if label_data is not None:
-		ax.scatter(label_data[:,0], label_data[:,1], s=4, c='k')
+	if data_ is not None:
+		X_ = data_[:,2]
+		Y_ = data_[:,0]
+		ax.scatter(X_, Y_, s=4, c='k')
 		# arrived at offsets manually
 		offsets = [(-50,-10), (3,0), (-55,0), (-20,-12), (3,0), (3,0), (3,0)]
-
-		X_ = label_data[:,0]
-		Y_ = label_data[:,1]
-		for i, name in enumerate(highlight_names):
+		for i, name in enumerate(data__labels):
 			ax.annotate(name, (X_[i], Y_[i]), xytext=offsets[i], textcoords='offset points')
 	
 	return im
@@ -132,21 +123,41 @@ if __name__ == '__main__':
 	# # cut_data = np.delete(data, np.argsort(metric)[-4:], axis=0)		
 	# # data = data[abs(metric-np.mean(metric)) < 4 * np.std(metric)]
 
-
 	path = 'Data\parameter_data_csv\p1+p2pow(x,p3).csv'
+	
+	highlight = ['job_00001', 'job_00014', 'job_00015', 'job_00054', 'job_00120', 'job_00186', 'job_05926']
+	# omit_names = None
+	omit = ['job_04117']
 
-	highlight_names = ['job_00001', 'job_00014', 'job_00015', 'job_00054', 'job_00120', 'job_00186', 'job_05926']
-	# omit_names = ['job_04117']
-	omit_names = None
-
+	data, data_ = read_csv_(path, split_names=highlight, omit_names=omit)
 	fig, ax = plt.subplots()
+	im = flatten_colour_label_scatter(data, ax, data_=data_, data__labels=highlight)
 
-	im = flatten_colour_scatter_label(path, ax, highlight_names=highlight_names, omit_names=omit_names)
+	data, _ = read_csv_(path, omit_names=omit)
+	# p = np.polyfit(data[:,0], data[:,1], 1)
+	## >>> [-0.54336499  1.66794143]
+	# x = np.linspace(-6, 5, 1000)
+	# y = p[0] * x + p[1]
+	# plt.plot(x, y)
+
+	from scipy.optimize import curve_fit
+
+	def function(p, p1, p2, p3):
+		return np.log(p1 + p) * p2 + p3
+
+	param_opt, _ = curve_fit(function, data[:,2], data[:,0])
+	print(param_opt)
+	# >>> [0.06384552 0.07976559] for b(p) = p1 / p**3 + p2
+	# >>> [-0.23949956  2.35809336  5.31243429] for a(p) = log(p1 + p) * p2 + p3
+	x = np.linspace(0.245, 0.7, 1000)
+	y = function(x, *param_opt)
+	plt.plot(x,y)
 
 	plt.xlabel('a')
 	plt.ylabel('b')
 	plt.title("a+b*x^p")
 	cbar = fig.colorbar(im, ax=ax)
 	cbar.set_label("p")
-
+	# plt.gca().set_aspect('equal', adjustable='box')
 	plt.show()
+	

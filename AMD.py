@@ -37,7 +37,7 @@ def fit_all(src, function):
 	return param_opts
 	# return min_max_dict, av_err
 
-def fit_all_and_write_values(src, function, function_as_str, filepath):
+def fit_all_and_write_values(src, function, function_as_str, filepath, filename):
 	errors = []
 	names = []
 	param_opts = []
@@ -65,14 +65,17 @@ def fit_all_and_write_values(src, function, function_as_str, filepath):
 			max_abs_diffs.append(np.amax(abs_diffs))
 	av_err = sum(errors) / len(errors)
 	av_std = sum(sigmas) / len(sigmas)
-	with open(filepath, 'w', newline='') as f:
+	writepath = os.path.join(filepath, filename)
+	with open(writepath + '.csv', 'w', newline='') as f:
 		writer = csv.writer(f)
-		writer.writerow(("function:" + function_as_str, "average_RMS:" + str(av_err),
-						 "average_std:" + str(av_std)))
+		# writer.writerow(("function:" + function_as_str, "average_RMS:" + str(av_err),
+		# 				 "average_std:" + str(av_std)))
 		sig = list(inspect.signature(function).parameters.keys())[1:]
 		writer.writerow(('name', *sig, 'RMS', 'std_dev_abs_diff', 'max_abs_difference'))
 		for name, params, err, sigma, max_diff in zip(names, param_opts, errors, sigmas, max_abs_diffs):
 			writer.writerow((name, *params, err, sigma, max_diff))
+	with open(writepath + '.tag', 'w', newline='') as f:
+		f.write("function:" + function_as_str + "\naverage_RMS:" + str(av_err) + "\naverage_std:" + str(av_std))
 
 def plot_one_actual_and_fitted(src, function, job_name):
 	with open(src) as f:
@@ -181,13 +184,13 @@ def plot_errors(src, range):
 	plt.show()
 
 if __name__ == '__main__':
-	from test_functions import my_rt
+	from test_functions import test
 	filename = "T2L_Energy_Density_AMDs1000_CLEAN.csv"
 	src = os.path.join("Data", filename)
-	s = "(p*x)^0.35076971"
-	filepath = "Data/new/pow(px,0.35076971).csv"
-	d = fit_all_and_write_values(src, my_rt, s, filepath)
-	# plot_all_actual_and_fitted(src, my_rt)
+	# s = "5.31243429+2.35809336*log(p-0.23949956) + (0.07976559+0.06384552/p^3) * x^p"
+	filepath = "Data/parameter_data_csv"
+	# d = fit_all_and_write_values(src, test, s, filepath, 'test')
+	plot_all_actual_and_fitted(src, test)
 
 	# params = fit_all(src, my_rt)
 	# for i in range(len(params[0])):
@@ -196,3 +199,4 @@ if __name__ == '__main__':
 	# 	print("stddev:", np.std(p))
 	# 	plt.hist(p, bins=250)
 	# 	plt.show()
+	
