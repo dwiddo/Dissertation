@@ -1,8 +1,11 @@
 import numpy as np
-import ase_tools
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 import csv
+
+import sys
+sys.path.append('.')
+from lib_tools import ase_tools
 
 def fit_plane(atoms):
 	"""
@@ -84,20 +87,21 @@ def flatten_colour_label_scatter(data, ax, data_=None, data__labels=None):
 	points in data_ will be labelled with data__labels and coloured black.
 	"""
 
-	X = data[:,2]
-	Y = data[:,0]
-	clr = data[:,1]
+	X = data[:,0]
+	Y = data[:,1]
+	clr = data[:,2]
 
 	im = ax.scatter(X, Y, s=3, c=clr, cmap='seismic',
-				norm=colors.PowerNorm(gamma=0.5)
+				# norm=colors.PowerNorm(gamma=0.5)
 				# norm=colors.LogNorm(vmin=clr.min(), vmax=clr.max())
 				)
 	if data_ is not None:
-		X_ = data_[:,2]
-		Y_ = data_[:,0]
-		ax.scatter(X_, Y_, s=4, c='k')
+		X_ = data_[:,0]
+		Y_ = data_[:,1]
+		ax.scatter(X_, Y_, s=4, c='k', marker='$f(x)=\sum$')
 		# arrived at offsets manually
-		offsets = [(-50,-10), (3,0), (-55,0), (-20,-12), (3,0), (3,0), (3,0)]
+		offsets = [(0,0)] * 7
+		# offsets = [(-50,-10), (3,0), (-55,0), (-20,-12), (3,0), (3,0), (3,0)]
 		for i, name in enumerate(data__labels):
 			ax.annotate(name, (X_[i], Y_[i]), xytext=offsets[i], textcoords='offset points')
 	
@@ -108,7 +112,6 @@ if __name__ == '__main__':
 	import os
 	# from ase.io import read
 	# import ase
-	# from draw import draw
 	# from pymatgen.io.ase import AseAtomsAdaptor
 
 	# "job_03351.cif" simplest crystal
@@ -125,33 +128,24 @@ if __name__ == '__main__':
 
 	path = 'Data\parameter_data_csv\p1+p2pow(x,p3).csv'
 	
-	highlight = ['job_00001', 'job_00014', 'job_00015', 'job_00054', 'job_00120', 'job_00186', 'job_05926']
-	# omit_names = None
-	omit = ['job_04117']
+	names = ['job_00001', 'job_00014', 'job_00015', 'job_00054', 'job_00120', 'job_00186', 'job_05926']
+	omit = None
+	# omit = ['job_04117']
 
-	data, data_ = read_csv_(path, split_names=highlight, omit_names=omit)
+	data, data_ = read_csv_(path, split_names=names, omit_names=omit)
 	fig, ax = plt.subplots()
-	im = flatten_colour_label_scatter(data, ax, data_=data_, data__labels=highlight)
+	labels = ['epsilon0001', 'delta0014', 'delta0015', 'beta0054', 'gamma0120', 'alpha0186', 'gamma5926']
+	im = flatten_colour_label_scatter(data, ax, data_=data_, data__labels=labels)
 
-	data, _ = read_csv_(path, omit_names=omit)
+	# from scipy.optimize import curve_fit
+	# data, _ = read_csv_(path, omit_names=omit)
 	# p = np.polyfit(data[:,0], data[:,1], 1)
 	## >>> [-0.54336499  1.66794143]
-	# x = np.linspace(-6, 5, 1000)
-	# y = p[0] * x + p[1]
-	# plt.plot(x, y)
+	# param_opt, _ = curve_fit(function, data[:,2], data[:,0])
+	# print(param_opt)
+	## >>> [0.06384552 0.07976559] for b(p) = p1 / p**3 + p2
+	## >>> [-0.23949956  2.35809336  5.31243429] for a(p) = log(p1 + p) * p2 + p3
 
-	from scipy.optimize import curve_fit
-
-	def function(p, p1, p2, p3):
-		return np.log(p1 + p) * p2 + p3
-
-	param_opt, _ = curve_fit(function, data[:,2], data[:,0])
-	print(param_opt)
-	# >>> [0.06384552 0.07976559] for b(p) = p1 / p**3 + p2
-	# >>> [-0.23949956  2.35809336  5.31243429] for a(p) = log(p1 + p) * p2 + p3
-	x = np.linspace(0.245, 0.7, 1000)
-	y = function(x, *param_opt)
-	plt.plot(x,y)
 
 	plt.xlabel('a')
 	plt.ylabel('b')

@@ -1,0 +1,4 @@
+ReducedCell::reduce() - Spacegroup::Centring type 'unknown centring' not (yet) implemented
+count: 2305
+The passed Cell object is not valid
+count: 710
