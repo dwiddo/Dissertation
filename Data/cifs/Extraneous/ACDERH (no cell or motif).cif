@@ -1,0 +1,30 @@
+
+#######################################################################
+#
+#                 Cambridge Crystallographic Data Centre
+#                                CCDC 
+#
+#######################################################################
+#
+# If this CIF has been generated from an entry in the Cambridge 
+# Structural Database, then it will include bibliographic, chemical, 
+# crystal, experimental, refinement or atomic coordinate data resulting 
+# from the CCDC's data processing and validation procedures.
+#
+#######################################################################
+
+data_ACDERH
+_chemical_name_common            
+bis(eta$2!-Ethene)-(2,4-pentanedionato)-rhodium(i)
+_chemical_formula_moiety         'C9 H15 O2 Rh1'
+_chemical_name_systematic        
+bis(\h^2^-Ethene)-(pentane-2,4-dionato-O,O')-rhodium(i)
+_cell_length_a                   0
+_cell_length_b                   0
+_cell_length_c                   0
+_cell_angle_alpha                0
+_cell_angle_beta                 0
+_cell_angle_gamma                0
+_cell_volume                     0
+
+#END

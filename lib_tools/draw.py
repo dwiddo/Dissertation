@@ -6,7 +6,15 @@ from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.vis.structure_vtk import StructureVis, StructureInteractorStyle
 import vtk
 
-import ase_tools
+
+"""
+FIXME: THIS IS SUPER BODGED
+"""
+try:
+    import ase_tools
+except:
+    from . import ase_tools
+
 
 """
 Wrapper for the class pymatgen.vis.structure_vtk.StructureVis
@@ -227,8 +235,7 @@ class WrappedStructureInteractorStyle(StructureInteractorStyle):
 
 def draw(atoms, show_unit_cell=True,
                 show_bonds=True,
-                unwrap=True,
-                show_centers=False):
+                unwrap=True):
     """
     Draw the contents of a .cif file, ase.Atoms or pymatgen.Structure.
     :param atoms: ase.Atoms, pymatgen.core.Structure, or path of .cif file.
@@ -277,7 +284,6 @@ if __name__ == "__main__":
 
     draw(path, show_unit_cell=True,
                show_bonds=True,
-               unwrap=False,
-               show_centers=True)
+               unwrap=False)
 
     

@@ -1,0 +1,28 @@
+
+#######################################################################
+#
+#                 Cambridge Crystallographic Data Centre
+#                                CCDC 
+#
+#######################################################################
+#
+# If this CIF has been generated from an entry in the Cambridge 
+# Structural Database, then it will include bibliographic, chemical, 
+# crystal, experimental, refinement or atomic coordinate data resulting 
+# from the CCDC's data processing and validation procedures.
+#
+#######################################################################
+
+data_ABAVEF
+_chemical_formula_moiety         'C42 H52 Co2 N4 O2'
+_chemical_name_systematic        
+bis((\m~2~-hydroxo)-(N,N'-bis(2,6-dimethylphenyl)-pent-2-en-4-imine-2-amido)-cobalt(ii))
+_cell_length_a                   12.9073(23)
+_cell_length_b                   8.7919(16)
+_cell_length_c                   17.4581(32)
+_cell_angle_alpha                90
+_cell_angle_beta                 104.419(3)
+_cell_angle_gamma                90
+_cell_volume                     1918.74
+
+#END

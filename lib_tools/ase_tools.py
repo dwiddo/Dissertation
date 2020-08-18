@@ -3,6 +3,7 @@ from ase.io import read
 import numpy as np
 from scipy.spatial.distance import cdist
 import networkx as nx
+from collections import defaultdict
 
 def read_cif_files(directory, progress_bar=False):
     """
@@ -26,6 +27,9 @@ def read_cif_files(directory, progress_bar=False):
             atoms = read(os.path.join(directory, filename))
             yield atoms, filename
 
+"""
+FIXME: Replace with ccdc.crystal.Crystal.assign_bonds() which is probably not a bodge.
+"""
 def find_bonds(p1, s1, p2=None, s2=None, bool=False):
     """
     find possible chemical bonds between atoms in p1 and p2 (lists of positions).
@@ -46,9 +50,10 @@ def find_bonds(p1, s1, p2=None, s2=None, bool=False):
         "C":  0.68,
         "N":  0.68,
         "O":  0.68,
-        # "P":  0.75,
-        # "S":  1.02
+        "P":  0.75,
+        "S":  1.02
     }
+    bond_radii = defaultdict(lambda: 1, bond_radii)
 
     max_bond_len = 2 * max(bond_radii.values()) + 0.45
     bonds = []
@@ -90,6 +95,10 @@ def get_component_centers(atoms):
     centers = [np.dot(masses[c], pos[c]) / masses[c].sum() for c in components]
     return np.array(centers)
 
+"""
+FIXME: This tool is a bit broken. I'm not exactly sure why. 
+Replace find_bonds with ccdc's bond detector.
+"""
 def unwrap(atoms, wrap_centers_into_cell=False):
     """
     :param atoms: Atoms object to unwrap

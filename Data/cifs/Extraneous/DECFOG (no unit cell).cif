@@ -1,0 +1,28 @@
+
+#######################################################################
+#
+#                 Cambridge Crystallographic Data Centre
+#                                CCDC 
+#
+#######################################################################
+#
+# If this CIF has been generated from an entry in the Cambridge 
+# Structural Database, then it will include bibliographic, chemical, 
+# crystal, experimental, refinement or atomic coordinate data resulting 
+# from the CCDC's data processing and validation procedures.
+#
+#######################################################################
+
+data_DECFOG
+_chemical_formula_moiety         'C17 H22 N1 O1 1+,Cl1 1-'
+_chemical_name_systematic        
+"N-(1-(2'-Methoxyphenyl)-ethyl)-\a-methyl-benzylammonium chloride"
+_cell_length_a                   0
+_cell_length_b                   0
+_cell_length_c                   0
+_cell_angle_alpha                0
+_cell_angle_beta                 0
+_cell_angle_gamma                0
+_cell_volume                     0
+
+#END
