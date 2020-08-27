@@ -12,13 +12,16 @@ structure.formula
 structure.lattice
 structure.lattice.lengths_and_angles
 
-# see docs for more or use this to get all methods/properties:
+# see docs for more or use this to see all methods/properties:
 # print(dir(structure))
 # print(dir(structure.lattice))
 
-# visualisation
-
+# # visualisation
 # from pymatgen.vis.structure_vtk import StructureVis
 # vis = StructureVis(show_polyhedron=False)
 # vis.set_structure(structure)
 # vis.show()
+
+# # convert to ase
+# from pymatgen.io.ase import AseAtomsAdaptor
+# structure = AseAtomsAdaptor.get_structure(atoms)

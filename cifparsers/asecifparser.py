@@ -9,8 +9,15 @@ atoms.get_cell_lengths_and_angles()     # cell parameters
 atoms.get_atomic_numbers()              # array of atomic numbers
 atoms.get_positions()                   # positions of atoms (cartesian)
 atoms.get_scaled_positions()            # positions of atoms (fractional)
+
 # etc, etc. see docs or help file for more
-# or get a list of all methods/properties with:
+# or see a list of all methods/properties with:
 # print(dir(atoms))
 
+# # visualisation
+# atoms.edit()
+
+# # convert to pymatgen
+# from pymatgen.io.ase import AseAtomsAdaptor
+# atoms = AseAtomsAdaptor.get_atoms(structure)
 
