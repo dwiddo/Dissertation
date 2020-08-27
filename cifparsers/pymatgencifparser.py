@@ -9,6 +9,8 @@ structure = parser.get_structures()[0]
 for s in parser.get_structures():
     print()
 
+
+
 structure.frac_coords
 structure.formula
 
