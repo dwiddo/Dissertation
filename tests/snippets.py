@@ -60,6 +60,7 @@ def read_csv_(path, split_names=None, omit_names=None, names_col=0, col_start=1,
 		for line in reader:
 			if line[names_col] not in omit_names:
 				data_point = [float(x) for x in line[col_start:col_end]]
+				# if data_point[0] > -150:
 				if line[names_col] in split_names:
 					data_.append(data_point)
 				else:
@@ -81,13 +82,13 @@ def flatten_colour_label_scatter(data, ax, data_=None, labels=None):
 	:param: labels
 		container of strings the same length as data_ 
 		(len(labels) == data.shape[0])
-		
+
 	:return:
 		matplotlib PathCollection object returned from scatter. Useful to add colourbar.
 	"""
 
-	X = data[:,0]
-	Y = data[:,1]
+	X = data[:,1]
+	Y = data[:,0]
 	clr = data[:,2]
 
 	im = ax.scatter(X, Y, s=1, c=clr, label='_nolegend_', cmap='viridis',
@@ -98,7 +99,7 @@ def flatten_colour_label_scatter(data, ax, data_=None, labels=None):
 	if data_ is not None:
 		markers = ['o', '^', 's', 'P', '*', 'X', 'd']
 		for i, point in enumerate(data_):
-			ax.scatter(point[0], point[1], s=30, c='k', 
+			ax.scatter(point[1], point[0], s=30, c='k', 
 					   marker=markers[i % len(markers)])
 		ax.legend(labels)
 
@@ -120,17 +121,16 @@ if __name__ == '__main__':
 	# cut_data = np.delete(data, np.argsort(metric)[-4:], axis=0)
 	# data = data[abs(metric-np.mean(metric)) < 4 * np.std(metric)]
 
-
-
-	path = 'Data\parameter_data_csv\p1+p2pow(x,p3).csv'
+	plt.rcParams.update({'font.size': 16})
+	path = r'Data\parameter_data_csv\p1+p2pow(x,p3).csv'
 	
 	names = ['job_00001', 'job_00014', 'job_00015', 'job_00054', 
 			 'job_00120', 'job_00186', 'job_05926']
 	omit = None
-	# omit = ['job_04117']
+	omit = ['job_04117']
 
 	data, data_ = read_csv_(path, split_names=names, omit_names=omit)
-
+	
 
 	path = r'Data\amds\T2L_Energy_Density_AMDs1000_CLEAN.csv'
 	# energy_data, _ = read_csv_(path, split_names=names, omit_names=omit, col_end=2)
@@ -149,6 +149,7 @@ if __name__ == '__main__':
 	plt.ylabel('$b$')
 	plt.title('$a+bx^p$')
 	cbar = fig.colorbar(im, ax=ax)
-	cbar.set_label('$p$')
+	cbar.set_label('p')
 	# plt.gca().set_aspect('equal', adjustable='box')
+
 	plt.show()

@@ -273,7 +273,7 @@ if __name__ == "__main__":
     import warnings
     warnings.filterwarnings("ignore")
 
-    CIF_DIRECTORY = "cifs/T2_experimental/"
+    CIF_DIRECTORY = "Data/cifs/T2_experimental/"
     # "job_03351.cif" simplest crystal
     # "job_06871.cif" largest volume
     # "job_06467.cif" most atoms

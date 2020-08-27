@@ -54,8 +54,8 @@ def fit_all_and_write_values(src, function, function_as_str, filepath, filename)
 			ydata = np.array(y, dtype=np.float64)
 			try:
 				param_opt, _ = curve_fit(function, xdata, ydata, maxfev=1000000)
-			except RuntimeError:
-				print("runtime error... skipping", line[0])
+			except RuntimeError as e:
+				print("runtime error:", str(e), "Skipping", line[0])
 				continue
 			names.append(line[0])
 			param_opts.append(param_opt)
@@ -65,6 +65,9 @@ def fit_all_and_write_values(src, function, function_as_str, filepath, filename)
 			max_abs_diffs.append(np.amax(abs_diffs))
 	av_err = sum(errors) / len(errors)
 	av_std = sum(sigmas) / len(sigmas)
+	# print(np.argmax(np.array(errors)))
+	# print(names[np.argmax(np.array(errors))])
+	# exit()
 	writepath = os.path.join(filepath, filename)
 	with open(writepath + '.csv', 'w', newline='') as f:
 		writer = csv.writer(f)
@@ -74,7 +77,7 @@ def fit_all_and_write_values(src, function, function_as_str, filepath, filename)
 		writer.writerow(('name', *sig, 'RMS', 'std_dev_abs_diff', 'max_abs_difference'))
 		for name, params, err, sigma, max_diff in zip(names, param_opts, errors, sigmas, max_abs_diffs):
 			writer.writerow((name, *params, err, sigma, max_diff))
-	with open(writepath + '.tag', 'w', newline='') as f:
+	with open(writepath + '.tag', 'w') as f:
 		f.write("function:" + function_as_str + "\naverage_RMS:" + str(av_err) + "\naverage_std:" + str(av_std))
 
 def plot_one_actual_and_fitted(src, function, job_name):
@@ -88,8 +91,8 @@ def plot_one_actual_and_fitted(src, function, job_name):
 				xdata = np.linspace(1, n, n)
 				ydata = np.array(y, dtype=np.float64)
 				param_opt, _ = curve_fit(function, xdata, ydata)
-				plt.plot(ydata, label='actual')
-				plt.plot(function(xdata, *param_opt), label='fitted')
+				plt.plot(ydata, label='actual', linewidth=8)
+				plt.plot(function(xdata, *param_opt), '--', label='fitted', linewidth=8)
 				plt.legend()
 				plt.show()
 				plt.close()
@@ -106,7 +109,7 @@ def plot_all_actual_and_fitted(src, function):
 			ydata = np.array(y, dtype=np.float64)
 			param_opt, _ = curve_fit(function, xdata, ydata)
 			plt.plot(ydata, label='actual')
-			plt.plot(function(xdata, *param_opt), label='fitted')
+			plt.plot(function(xdata, *param_opt), '--', label='fitted')
 			plt.legend()
 			print(line[0], param_opt)
 			plt.show()
@@ -184,13 +187,13 @@ def plot_errors(src, range):
 	plt.show()
 
 if __name__ == '__main__':
-	from test_functions import test
+	from test_functions import f_
 	filename = "T2L_Energy_Density_AMDs1000_CLEAN.csv"
-	src = os.path.join("Data", filename)
-	# s = "5.31243429+2.35809336*log(p-0.23949956) + (0.07976559+0.06384552/p^3) * x^p"
+	src = os.path.join("Data/amds", filename)
+	s = 'test'
 	filepath = "Data/parameter_data_csv"
-	# d = fit_all_and_write_values(src, test, s, filepath, 'test')
-	plot_all_actual_and_fitted(src, test)
+	# d = fit_all_and_write_values(src, f_, s, filepath, 'test')
+	plot_one_actual_and_fitted(src, f_, 'job_02491')
 
 	# params = fit_all(src, my_rt)
 	# for i in range(len(params[0])):

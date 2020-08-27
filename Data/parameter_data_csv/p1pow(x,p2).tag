@@ -1,0 +1,3 @@
+function:p1*x^p2
+average_RMS:0.09899271068467179
+average_std:0.06459271613291188
