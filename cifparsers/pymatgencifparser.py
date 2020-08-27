@@ -6,6 +6,9 @@ parser = CifParser(cif_path)
 structure = parser.get_structures()[0]      
 # parser returns a list of all structures in one file, thus [0]
 
+for s in parser.get_structures():
+    print()
+
 structure.frac_coords
 structure.formula
 
