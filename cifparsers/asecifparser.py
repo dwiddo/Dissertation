@@ -10,7 +10,6 @@ atoms.get_cell_lengths_and_angles()     # cell parameters
 atoms.get_atomic_numbers()              # array of atomic numbers
 atoms.get_positions()                   # positions of atoms (cartesian)
 atoms.get_scaled_positions()            # positions of atoms (fractional)
-print(atoms.get_positions())
 # print(dir(atoms))
 
 # etc, etc. see docs or help file for more
