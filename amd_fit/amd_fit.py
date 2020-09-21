@@ -50,10 +50,10 @@ def fit_all_and_write_values(src, function, function_as_str, filepath, filename)
 		for line in progressbar.progressbar(reader):
 			y = [float(i) for i in line[3:]]
 			n = len(y)
-			xdata = np.linspace(1, n, n)
+			xdata = np.linspace(1, n, n, dtype=np.float64)
 			ydata = np.array(y, dtype=np.float64)
 			try:
-				param_opt, _ = curve_fit(function, xdata, ydata, maxfev=1000000)
+				param_opt, _ = curve_fit(function, xdata, ydata, maxfev=10000000)
 			except RuntimeError as e:
 				print("runtime error:", str(e), "Skipping", line[0])
 				continue
@@ -187,13 +187,13 @@ def plot_errors(src, range):
 	plt.show()
 
 if __name__ == '__main__':
-	from test_functions import f_
+	from test_functions import f__
 	filename = "T2L_Energy_Density_AMDs1000_CLEAN.csv"
 	src = os.path.join("Data/amds", filename)
-	s = 'test'
+	s = 'a+bx^p+clog(x+d)'
 	filepath = "Data/parameter_data_csv"
-	# d = fit_all_and_write_values(src, f_, s, filepath, 'test')
-	plot_one_actual_and_fitted(src, f_, 'job_02491')
+	d = fit_all_and_write_values(src, f__, s, filepath, 'a+bpow(x,p)+clog(x+d)')
+	# plot_one_actual_and_fitted(src, f_, 'job_02491')
 
 	# params = fit_all(src, my_rt)
 	# for i in range(len(params[0])):

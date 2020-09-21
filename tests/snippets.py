@@ -87,8 +87,8 @@ def flatten_colour_label_scatter(data, ax, data_=None, labels=None):
 		matplotlib PathCollection object returned from scatter. Useful to add colourbar.
 	"""
 
-	X = data[:,1]
-	Y = data[:,0]
+	X = data[:,0]
+	Y = data[:,1]
 	clr = data[:,2]
 
 	im = ax.scatter(X, Y, s=1, c=clr, label='_nolegend_', cmap='viridis',
@@ -124,10 +124,11 @@ if __name__ == '__main__':
 	plt.rcParams.update({'font.size': 16})
 	path = r'Data\parameter_data_csv\p1+p2pow(x,p3).csv'
 	
-	names = ['job_00001', 'job_00014', 'job_00015', 'job_00054', 
-			 'job_00120', 'job_00186', 'job_05926']
+	# names = ['job_00001', 'job_00014', 'job_00015', 'job_00054', 
+	# 		 'job_00120', 'job_00186', 'job_05926']
+	names = None
 	omit = None
-	omit = ['job_04117']
+	# omit = ['job_04117']
 
 	data, data_ = read_csv_(path, split_names=names, omit_names=omit)
 	

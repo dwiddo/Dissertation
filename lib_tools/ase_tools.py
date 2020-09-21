@@ -96,7 +96,8 @@ def get_component_centers(atoms):
     return np.array(centers)
 
 """
-FIXME: This tool is a bit broken. I'm not exactly sure why. 
+FIXME: This tool is a bit broken. I'm not exactly sure why, except that
+it's far too big to be one function.
 Replace find_bonds with ccdc's bond detector.
 """
 def unwrap(atoms, wrap_centers_into_cell=False):

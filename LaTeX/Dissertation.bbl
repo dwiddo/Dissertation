@@ -1,0 +1,466 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{anyt/global//global/global}
+  \entry{T2}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=fBINC}{%
+         prefix={for},
+         prefixi={f\bibinitperiod},
+         family={Biotechnology\bibnamedelima Information},
+         familyi={B\bibinitperiod\bibinitdelim I\bibinitperiod},
+         given={National\bibnamedelima Center},
+         giveni={N\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BINCf1}
+    \strng{fullhash}{BINCf1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{BI}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{note}{Online; accessed September 5, 2020}
+    \field{title}{PubChem Compound Summary for CID 102454613}
+    \verb{url}
+    \verb https://pubchem.ncbi.nlm.nih.gov/compound/102454613
+    \endverb
+  \endentry
+
+  \entry{CIF}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=oCIU}{%
+         prefix={of},
+         prefixi={o\bibinitperiod},
+         family={Crystallography},
+         familyi={C\bibinitperiod},
+         given={International\bibnamedelima Union},
+         giveni={I\bibinitperiod\bibinitdelim U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CIUo1}
+    \strng{fullhash}{CIUo1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Cry}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{CIF Version 1.1 Working specification}
+    \verb{url}
+    \verb https://www.iucr.org/resources/cif/spec/version1.1
+    \endverb
+  \endentry
+
+  \entry{GHH}{book}{}
+    \name{author}{1}{}{%
+      {{hash=HG}{%
+         family={Hardy},
+         familyi={H\bibinitperiod},
+         given={G.H.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Chelsea Publishing Company, N.Y.}%
+    }
+    \strng{namehash}{HG1}
+    \strng{fullhash}{HG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Har59}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{edition}{3rd}
+    \field{title}{Ramanujan: Twelve Lectures on Subjects Suggested by His Life
+  and Work}
+    \field{year}{1959}
+  \endentry
+
+  \entry{point-dist}{article}{}
+    \name{author}{2}{}{%
+      {{hash=LPD}{%
+         family={Lax},
+         familyi={L\bibinitperiod},
+         given={Peter\bibnamedelima D.},
+         giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=PRS}{%
+         family={Phillips},
+         familyi={P\bibinitperiod},
+         given={Ralph\bibnamedelima S.},
+         giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LPDPRS1}
+    \strng{fullhash}{LPDPRS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{LP82}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \verb{doi}
+    \verb https://doi.org/10.1016/0022-1236(82)90050-7
+    \endverb
+    \field{number}{3}
+    \field{pages}{280\bibrangedash 350}
+    \field{title}{The Asymptotic Distribution of Lattice Points in Euclidean
+  and Non-Euclidean Spaces}
+    \field{volume}{46}
+    \field{year}{1982}
+  \endentry
+
+  \entry{2020-Mosca-Kurlin}{misc}{}
+    \name{author}{2}{}{%
+      {{hash=MM}{%
+         family={Mosca},
+         familyi={M\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Kurlin},
+         familyi={K\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MMKV1}
+    \strng{fullhash}{MMKV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{MK20}
+    \field{extraalpha}{1}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{howpublished}{Leibniz International Proceedings in Informatics}
+    \field{title}{{Algorithmic challenges of computational geometry motivated
+  by applications in crystallography}}
+    \field{year}{2020}
+  \endentry
+
+  \entry{mosca2020average}{misc}{}
+    \name{author}{2}{}{%
+      {{hash=MM}{%
+         family={Mosca},
+         familyi={M\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=KV}{%
+         family={Kurlin},
+         familyi={K\bibinitperiod},
+         given={V.},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MMKV1}
+    \strng{fullhash}{MMKV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{MK20}
+    \field{extraalpha}{2}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \verb{eprint}
+    \verb 2009.02488
+    \endverb
+    \field{title}{Average Minimum Distances continuously quantify similarities
+  between geometries of any crystal structures}
+    \field{eprinttype}{arXiv}
+    \field{year}{2020}
+  \endentry
+
+  \entry{Nature}{article}{}
+    \name{author}{4}{}{%
+      {{hash=PA}{%
+         family={Pulido},
+         familyi={P\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CL}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=KT}{%
+         family={Kaczorowski},
+         familyi={K\bibinitperiod},
+         given={T.},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=ea}{%
+         prefix={et},
+         prefixi={e\bibinitperiod},
+         family={al.},
+         familyi={a\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{PA+1}
+    \strng{fullhash}{PACLKTae1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Pul+17}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \verb{doi}
+    \verb 10.1038/nature21419
+    \endverb
+    \field{pages}{657\bibrangedash 664}
+    \field{title}{Functional materials discovery using
+  energy-structure-function maps}
+    \field{volume}{543}
+    \field{journaltitle}{Nature}
+    \field{year}{2017}
+  \endentry
+
+  \entry{2020SciPy-NMeth}{article}{}
+    \name{author}{35}{}{%
+      {{hash=VP}{%
+         family={{Virtanen}},
+         familyi={V\bibinitperiod},
+         given={Pauli},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=GR}{%
+         family={{Gommers}},
+         familyi={G\bibinitperiod},
+         given={Ralf},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=OTE}{%
+         family={{Oliphant}},
+         familyi={O\bibinitperiod},
+         given={Travis\bibnamedelima E.},
+         giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=HM}{%
+         family={{Haberland}},
+         familyi={H\bibinitperiod},
+         given={Matt},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=RT}{%
+         family={{Reddy}},
+         familyi={R\bibinitperiod},
+         given={Tyler},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={{Cournapeau}},
+         familyi={C\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BE}{%
+         family={{Burovski}},
+         familyi={B\bibinitperiod},
+         given={Evgeni},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=PP}{%
+         family={{Peterson}},
+         familyi={P\bibinitperiod},
+         given={Pearu},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=WW}{%
+         family={{Weckesser}},
+         familyi={W\bibinitperiod},
+         given={Warren},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={{Bright}},
+         familyi={B\bibinitperiod},
+         given={Jonathan},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=vSJ}{%
+         family={{van der Walt}},
+         familyi={v\bibinitperiod},
+         given={St{\'e}fan\bibnamedelima J.},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={{Brett}},
+         familyi={B\bibinitperiod},
+         given={Matthew},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=WJ}{%
+         family={{Wilson}},
+         familyi={W\bibinitperiod},
+         given={Joshua},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=JK}{%
+         family={{Jarrod Millman}},
+         familyi={J\bibinitperiod},
+         given={K.},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=MN}{%
+         family={{Mayorov}},
+         familyi={M\bibinitperiod},
+         given={Nikolay},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=NARJ}{%
+         family={{Nelson}},
+         familyi={N\bibinitperiod},
+         given={Andrew R.\bibnamedelima J.},
+         giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim
+  J\bibinitperiod},
+      }}%
+      {{hash=JE}{%
+         family={{Jones}},
+         familyi={J\bibinitperiod},
+         given={Eric},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=KR}{%
+         family={{Kern}},
+         familyi={K\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=LE}{%
+         family={{Larson}},
+         familyi={L\bibinitperiod},
+         given={Eric},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=CC}{%
+         family={{Carey}},
+         familyi={C\bibinitperiod},
+         given={CJ},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=PI}{%
+         family={{Polat}},
+         familyi={P\bibinitperiod},
+         given={{\.I}lhan},
+         giveni={{\\bibinitperiodI}\bibinitperiod},
+      }}%
+      {{hash=FY}{%
+         family={{Feng}},
+         familyi={F\bibinitperiod},
+         given={Yu},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=MEW}{%
+         family={{Moore}},
+         familyi={M\bibinitperiod},
+         given={Eric\bibnamedelima W.},
+         giveni={E\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=VJ}{%
+         family={{Vand erPlas}},
+         familyi={V\bibinitperiod},
+         given={Jake},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=LD}{%
+         family={{Laxalde}},
+         familyi={L\bibinitperiod},
+         given={Denis},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=PJ}{%
+         family={{Perktold}},
+         familyi={P\bibinitperiod},
+         given={Josef},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CR}{%
+         family={{Cimrman}},
+         familyi={C\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=HI}{%
+         family={{Henriksen}},
+         familyi={H\bibinitperiod},
+         given={Ian},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=QEA}{%
+         family={{Quintero}},
+         familyi={Q\bibinitperiod},
+         given={E.\bibnamedelima A.},
+         giveni={E\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=HCR}{%
+         family={{Harris}},
+         familyi={H\bibinitperiod},
+         given={Charles\bibnamedelima R},
+         giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=AAM}{%
+         family={{Archibald}},
+         familyi={A\bibinitperiod},
+         given={Anne\bibnamedelima M.},
+         giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=RAH}{%
+         family={{Ribeiro}},
+         familyi={R\bibinitperiod},
+         given={Ant{\^o}nio\bibnamedelima H.},
+         giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=PF}{%
+         family={{Pedregosa}},
+         familyi={P\bibinitperiod},
+         given={Fabian},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=vP}{%
+         family={{van Mulbregt}},
+         familyi={v\bibinitperiod},
+         given={Paul},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=CS}{%
+         family={{Contributors}},
+         familyi={C\bibinitperiod},
+         given={SciPy 1.\bibnamedelima 0},
+         giveni={S\bibinitperiod\bibinitdelim \bibinitperiod\bibinitdelim
+  \bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{VP+1}
+  \strng{fullhash}{VPGROTEHMRTCDBEPPWWBJvSJBMWJJKMNNARJJEKRLECCPIFYMEWVJLDPJCRHIQEAHCRAAMRAHPFvPCS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{{Vir}+20}
+    \field{sortinit}{V}
+    \field{sortinithash}{V}
+    \verb{doi}
+    \verb https://doi.org/10.1038/s41592-019-0686-2
+    \endverb
+    \field{pages}{261\bibrangedash 272}
+    \field{title}{{SciPy 1.0: Fundamental Algorithms for Scientific Computing
+  in Python}}
+    \field{volume}{17}
+    \field{journaltitle}{Nature Methods}
+    \field{year}{2020}
+  \endentry
+\enddatalist
+\endinput

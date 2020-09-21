@@ -1,0 +1,3 @@
+function:theoretical approximation
+average_RMS:0.362898972499437
+average_std:0.10337877289037707

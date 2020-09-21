@@ -1,18 +1,14 @@
 from pymatgen.io.cif import CifParser
 
 # path to cif
-cif_path = 'cifparsers/job_00001.cif'
+cif_path = 'Data/cifs/Large_T2_set/job_03351.cif'
 parser = CifParser(cif_path)
 structure = parser.get_structures()[0]      
 # parser returns a list of all structures in one file, thus [0]
 
-for s in parser.get_structures():
-    print()
-
-
 
 structure.frac_coords
-structure.formula
+print(structure.formula)
 
 structure.lattice
 structure.lattice.lengths_and_angles

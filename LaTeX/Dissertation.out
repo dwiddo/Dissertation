@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Setup}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Notes}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{CIF file format}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Crystal Structure Prediction}{}% 4
+\BOOKMARK [1][-]{section.3}{Introducing the Average Minimum Distance}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Definitions}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Results}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{Numerical Treatment}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Data Acquisition}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{AMD plots}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Fitting}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.4}{Discussion}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.5}{More Attempts}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Mathematical Treatment}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{1-dimensional case}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{> 1 dimensions}{section.5}% 16
+\BOOKMARK [1][-]{section*.2}{Appendices}{}% 17
+\BOOKMARK [1][-]{appendix.1.A}{Code}{}% 18

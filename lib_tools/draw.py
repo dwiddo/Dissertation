@@ -273,13 +273,13 @@ if __name__ == "__main__":
     import warnings
     warnings.filterwarnings("ignore")
 
-    CIF_DIRECTORY = "Data/cifs/T2_experimental/"
+    CIF_DIRECTORY = "Data/cifs/Large_T2_set/"
     # "job_03351.cif" simplest crystal
     # "job_06871.cif" largest volume
     # "job_06467.cif" most atoms
     # experimental solvent NAVXUG_1478356_T2alpha.cif
     # experimental solvent SEMDIA_1520227_T2delta_240K.cif
-    filename = "SEMDIA_1520227_T2delta_240K.cif"
+    filename = "job_00142.cif"
     path = os.path.join(CIF_DIRECTORY, filename)
 
     draw(path, show_unit_cell=True,

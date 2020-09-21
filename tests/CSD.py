@@ -46,18 +46,40 @@ if __name__ == '__main__':
         from progressbar import progressbar
         csd_crystal_reader = progressbar(csd_crystal_reader)
 
+    no_unit_cell = 0
+    no_motif     = 0
+    no_formula   = 0
 
     with open('test.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['CSD_ID', 'cell_length_a', 'cell_length_b', 'cell_length_c',
-                        'cell_angle_alpha', 'cell_angle_beta', 'cell_angle_gamma'])
+                        'cell_angle_alpha', 'cell_angle_beta', 'cell_angle_gamma',
+                        'is_reduced', 'crystal_system'])
 
         for crystal in csd_crystal_reader:
-            if crystal.formula:
-                if COHN(crystal.formula):              
-                    cell_params = list(crystal.cell_lengths) + list(crystal.cell_angles)
-                    if not all(a == 0 for a in cell_params):
+            cell_params = list(crystal.cell_lengths) + list(crystal.cell_angles)
+            if not all(a == 0 for a in cell_params):
+                # if COHN(crystal.formula):
+                if crystal.formula:
+                    if not len(crystal.molecule.atoms):
                         cell = Cell.new(cell_params)
-                        reduced_cell, _ = cell.niggli_reduce()
-                        row = [crystal.identifier, *reduced_cell.lengths(), *reduced_cell.angles()]
+                        is_red, reduced_cell = is_reduced(cell)
+                        row = [crystal.identifier]
+                        if is_red:
+                            row.extend([*reduced_cell.lengths(), *reduced_cell.angles()])
+                        else:
+                            row.extend(cell_params)
+                        row.append(is_red)
+                        row.append(crystal.crystal_system)
                         writer.writerow(row)
+                    else:
+                        no_motif += 1
+                else:
+                    no_formula += 1 
+            else:
+                no_unit_cell += 1
+    
+    print("no unit cell:", no_unit_cell)
+    print("no formula:", no_formula)
+    print("no_motif:", no_motif)
+            

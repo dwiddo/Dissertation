@@ -8,12 +8,14 @@ def my_rt(x, p1, p2):
 def f_(x, p1, p2, p3):
 	return p1 + p2 * (np.sign(x) * (np.abs(x) ** p3))
 
+def f__(x, a, b, c, d, p):
+	t = x + d
+	t[t<0] = 1e-8
+	return a + b * x ** p + c * np.log(t)
 
-def test(x, p):
-	_a = max(1e-8, p - 0.22018971)
-	a = 5.7890513 + 2.79125162 * np.log(_a)
-	b = 0.40652574 + 0.01898218 * np.sign(p) * (np.abs(p) ** (-3.89713184))
-	return a + b * np.sign(x) * ((np.abs(x)) ** p)
+def new_idea(x, a, b, c, d, p):
+	t = c*x + d
+	return a + b * np.sign(t) * (np.abs(t) ** p)
 
 if __name__ == '__main__':
 	pass
